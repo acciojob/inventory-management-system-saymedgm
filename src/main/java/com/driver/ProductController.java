@@ -7,15 +7,20 @@ public class ProductController {
     private List<Product> products = new ArrayList<>();
 
     public void addProduct(String name, int quantity) {
-    	//your code goes here
+        Product product = new Product(name, quantity);
+        products.add(product);
     }
 
     public List<Product> getAllProducts() {
-    	//your code goes here
         return new ArrayList<>(products);
     }
 
     public void updateProductQuantity(String name, int newQuantity) {
-    	//your code goes here
+        for (Product product : products) {
+            if (product.getName().equalsIgnoreCase(name)) {
+                product.setQuantity(newQuantity);
+                break;
+            }
+        }
     }
 }
